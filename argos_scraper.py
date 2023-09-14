@@ -1,3 +1,5 @@
+""" Scrape argos product page """
+
 from multiprocessing import Pool
 
 import re
@@ -64,9 +66,16 @@ def get_product_details_parallel(urls):
     """ Returns a list of dictionaries containing product page information Running multiple 
     processes in parallel """
 
+    # Record process start datetime
+    datetime_start = datetime.datetime.now()
+
     with Pool() as pool:
         results = pool.map(get_product_details, urls)
-    return results
+
+    audit = {"datetime_start": f"{datetime_start}",
+             "datetime_end": f"{datetime.datetime.now()}"}
+
+    return results, audit
 
 
 def get_url(url):
@@ -122,12 +131,21 @@ def get_breadcrumb(content) -> str:
 
 # Main module
 if __name__ == '__main__':
+
+    # Run scraping in batches
+    BATCH_SIZE = 2
+
     urls = [
         "https://www.argos.co.uk/product/8448262",
-        "https://www.argos.co.uk/product/4562647?clickCSR=slp:cannedSearch"
+        "https://www.argos.co.uk/product/4562647?clickCSR=slp:cannedSearch",
         "https://www.argos.co.uk/product/3361227?clickCSR=slp:cannedSearch",
         "https://www.argos.co.uk/product/3289725?clickCSR=slp:cannedSearch"
     ]
 
-    print(get_product_details_parallel(urls))
+    batched_urls = [urls[i:i+BATCH_SIZE]
+                    for i in range(0, len(urls), BATCH_SIZE)]
+
+    for batch in batched_urls:
+        print(get_product_details_parallel(batch))
+
     # print(get_product_details("https://www.argos.co.uk/product/3447426?clickPR=plp:1:334"))
