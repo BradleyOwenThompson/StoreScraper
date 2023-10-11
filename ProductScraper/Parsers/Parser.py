@@ -1,7 +1,13 @@
 "Parse web pages, returned in a standard format"
-from iParser import iParser
+from .iParser import iParser
+
 
 class Parser(iParser):
+    """
+    Parse web pages, implementing an interface to cover stores that we may not be albe to provide
+    methods for by returning None. The parse method must be defined by child classes.
+    return_information method allows for consistent results to be returned
+    """
 
     def __init__(self, parser="Unknown"):
         self.PARSER = parser
@@ -23,7 +29,7 @@ class Parser(iParser):
 
     def return_information(self):
         "Return information in a standard form"
-        
+
         return {
             "status": self.get_status(),
             "errors": len(self.get_error_messages()),
@@ -36,11 +42,11 @@ class Parser(iParser):
             "price": self.get_price(),
             "image_url": self.get_image()
         }
-    
+
     def add_error_message(self, message):
         "Append error messages"
         self.error_messages.append(message)
-    
+
     # Implement Interface Methods    
     def get_store(self):
         return self.PARSER
@@ -50,7 +56,7 @@ class Parser(iParser):
 
     def get_category_one(self):
         return self.category_one
-    
+
     def get_category_two(self):
         return self.category_two
 
@@ -62,13 +68,12 @@ class Parser(iParser):
 
     def get_image(self):
         return self.image
-    
+
     def get_status(self):
-        if(len(self.get_error_messages()) == 0):
+        if len(self.get_error_messages()) == 0:
             return "success"
-        else:
-            return "error"
-    
+
+        return "error"
+
     def get_error_messages(self):
         return self.error_messages
-    

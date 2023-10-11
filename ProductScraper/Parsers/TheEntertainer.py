@@ -1,7 +1,9 @@
 "Inherits Parser, processing www.argos.co.uk"
-from Parser import Parser
+from .Parser import Parser
+
 
 class TheEntertainer(Parser):
+    "Parser for processing TheToyShop.com"
 
     def __init__(self):
         super().__init__(parser="TheEntertainer")    
@@ -11,7 +13,7 @@ class TheEntertainer(Parser):
     def __set_item_name(self):
         "Set the product name"
         try:
-            self.item_name = self.page_content.select("h1")[0].text        
+            self.item_name = self.page_content.select("h1")[0].text
         except:
             super().add_error_message("item_name: fail")
 
@@ -25,7 +27,7 @@ class TheEntertainer(Parser):
                     match category_id:
                         case 2: self.category_one = category_elements[category_id].text
                         case 3: self.category_two = category_elements[category_id].text
-                        case 4: self.category_three = category_elements[category_id].text      
+                        case 4: self.category_three = category_elements[category_id].text
         except:
             super().add_error_message("item_name: fail")
 
@@ -39,7 +41,7 @@ class TheEntertainer(Parser):
     def __set_image(self):
         "Get the primary image url"
         try:
-            self.image = f"https://www.thetoyshop.com{self.page_content.select('.lazyOwl')[0]['src']}"#      
+            self.image = f"https://www.thetoyshop.com{self.page_content.select('.lazyOwl')[0]['src']}"      
         except:
             super().add_error_message("item_name: fail")
 
@@ -55,6 +57,3 @@ class TheEntertainer(Parser):
 
         # Return Information using a parent method
         return super().return_information()
-
-
-

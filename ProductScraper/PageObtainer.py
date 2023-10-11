@@ -2,6 +2,7 @@
 from curl_cffi import requests
 from bs4 import BeautifulSoup
 
+
 class PageObtainer():
 
     def __init__(self, impersonate_browser="chrome110"):

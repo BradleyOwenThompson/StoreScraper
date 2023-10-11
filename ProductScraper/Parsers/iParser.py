@@ -1,7 +1,12 @@
 "Interface for Parser"
 from abc import ABCMeta, abstractmethod
 
+
 class iParser(metaclass=ABCMeta):
+    """Interface for Parser so all data points will have a method, be it in the Parser class
+    or the child class overrides it
+    """
+
     @abstractmethod
     def return_information(self):
         "return a information in a standard form"
@@ -17,11 +22,11 @@ class iParser(metaclass=ABCMeta):
     @abstractmethod
     def get_category_one(self):
         "Return category 1"
-    
+
     @abstractmethod
     def get_category_two(self):
         "Return category 1"
-    
+
     @abstractmethod
     def get_category_three(self):
         "Return category 2"
@@ -41,7 +46,3 @@ class iParser(metaclass=ABCMeta):
     @abstractmethod
     def get_error_messages(self):
         "Return the products image url"
-
-
-
-

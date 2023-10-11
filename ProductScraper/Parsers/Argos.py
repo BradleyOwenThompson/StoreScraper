@@ -1,10 +1,12 @@
 "Inherits Parser, processing www.argos.co.uk"
-from Parser import Parser
+from .Parser import Parser
+
 
 class Argos(Parser):
+    "Parser for process www.argos.co.uk"
 
     def __init__(self):
-        super().__init__(parser="Argos")    
+        super().__init__(parser="Argos")
         self.page_content = None
 
     # Get item information from the website
@@ -18,14 +20,15 @@ class Argos(Parser):
     def __set_categories(self):
         "Set product category"
         try:
-            category_elements = self.page_content.findAll("li", {"data-test": "component-breadcrumb-item"})
-            
-            for category_id in range (len(category_elements)):
+            category_elements = self.page_content.findAll("li", {"data-test":
+                                                                 "component-breadcrumb-item"})
+
+            for category_id, category in enumerate(category_elements):
                 if category_id <= len(category_elements):
-                    match category_id:
-                        case 0: self.category_one = category_elements[category_id].text
-                        case 1: self.category_two = category_elements[category_id].text
-                        case 2: self.category_three = category_elements[category_id].text
+                    match id:
+                        case 0: self.category_one = category.text
+                        case 1: self.category_two = category.text
+                        case 2: self.category_three = category.text
         except:
             super().add_error_message("category: fail")
 
