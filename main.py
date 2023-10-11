@@ -1,5 +1,5 @@
 "Example using Argos and TheEntertainer"
-from ProductScraper.StoreScraper import StoreScraper
+from StoreScraper.StoreScraper import StoreScraper
 
 scraper = StoreScraper()
 
