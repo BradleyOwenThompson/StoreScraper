@@ -12,8 +12,7 @@ This library will allow you to scrape "basic" product information from online re
 An example can be found in main.py
 
 The below code scrapes two stores and prints out the results
-<code>
-
+```python
 "Example using Argos and TheEntertainer"
 from ProductScraper.StoreScraper import StoreScraper
 
@@ -28,4 +27,4 @@ results = scraper.get_information("https://www.thetoyshop.com/collectibles/adult
                                   )
 print(results)
 
-</code>
+```
