@@ -6,8 +6,8 @@ class PageObtainer():
 
     def __init__(self, impersonate_browser="chrome110"):
         "Create a requests session"
-        self.s: requests.session = requests.Session()
-        self.impersonate_browser = impersonate_browser
+        self.__session: requests.session = requests.Session()
+        self.__impersonate_browser = impersonate_browser
 
     # Return the page 
     def get_page(self, url) -> tuple[int, str]:
@@ -16,7 +16,7 @@ class PageObtainer():
 
         #Handle connection issues
         try:
-            r = self.s.get(url, impersonate=self.impersonate_browser, timeout=5)
+            r = self.__session.get(url, impersonate=self.__impersonate_browser, timeout=5)
         except requests.RequestsError as e:
             return 408, f"WebScraper(): {e}"
 
