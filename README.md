@@ -14,7 +14,7 @@ An example can be found in main.py
 The below code scrapes two stores and prints out the results
 ```python
 "Example using Argos and TheEntertainer"
-from ProductScraper.StoreScraper import StoreScraper
+from StoreScraper.StoreScraper import StoreScraper
 
 scraper = StoreScraper()
 
@@ -32,16 +32,16 @@ print(result2)
 ### Result 1 Output                         
 ```json
 {
-    "url": "https://www.argos.co.uk/product/8992866",
-    "start_datetime": "2023-10-11 19:55:14.920228",
-    "end_datetime": "2023-10-11 19:55:15.296868",
+    "url": "https: //www.argos.co.uk/product/8992866",
+    "start_datetime": "2023-10-12 12:31:09.102859",
+    "end_datetime": "2023-10-12 12:31:09.660612",
     "status": "success",
     "errors": 0,
     "error_messages": [],
     "parser": "Argos",
     "item_name": "DC 12-inch Superman Figure",
-    "category_one": None,
-    "category_two": None,
+    "category_one": "Toys",
+    "category_two": "Playsets and figures",
     "category_three": None,
     "price": "£10.00",
     "image_url": "//media.4rgos.it/i/Argos/8992866_R_Z001A?w=750&h=440&qlt=70"
@@ -52,8 +52,8 @@ print(result2)
 ```json
 {
     "url": "https://www.thetoyshop.com/collectibles/adult-collectibles/DC-Comics-30cm-Superman-Figure/p/545842?queryId=83dec2295943aff8586c518c6f031006",
-    "start_datetime": "2023-10-11 19:55:15.328904",
-    "end_datetime": "2023-10-11 19:55:15.604712",
+    "start_datetime": "2023-10-12 12:31:09.698567",
+    "end_datetime": "2023-10-12 12:31:10.002384",
     "status": "success",
     "errors": 0,
     "error_messages": [],
