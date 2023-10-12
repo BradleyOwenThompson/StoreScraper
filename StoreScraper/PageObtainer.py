@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 
 class PageObtainer():
+    "fetches the HTML content of a web page, returning a BS4 object"
 
     def __init__(self, impersonate_browser="chrome110"):
         "Create a requests session"
