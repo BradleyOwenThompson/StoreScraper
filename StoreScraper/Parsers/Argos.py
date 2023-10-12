@@ -24,8 +24,8 @@ class Argos(Parser):
                                                                  "component-breadcrumb-item"})
 
             for category_id, category in enumerate(category_elements):
-                if category_id <= len(category_elements):
-                    match id:
+                if category_id < len(category_elements)-1:
+                    match category_id:
                         case 0: self.category_one = category.text
                         case 1: self.category_two = category.text
                         case 2: self.category_three = category.text

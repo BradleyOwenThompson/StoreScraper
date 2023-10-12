@@ -23,7 +23,7 @@ class TheEntertainer(Parser):
             category_elements = self.page_content.select("ol.breadcrumb")[0].findAll("a")
 
             for category_id in range (2, len(category_elements)):
-                if category_id <= len(category_elements):
+                if category_id < len(category_elements):
                     match category_id:
                         case 2: self.category_one = category_elements[category_id].text
                         case 3: self.category_two = category_elements[category_id].text
